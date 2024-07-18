@@ -59,7 +59,7 @@ func main() {
 				}
 			}
 
-			output = append(output, data{path, error_value, info.Size(), fmt.Sprintf("%s", info.Mode()), crcvalue})
+			output = append(output, data{path, error_value, info.Size(), fmt.Sprint(info.Mode()), crcvalue})
 
 			return nil
 		})
@@ -74,5 +74,5 @@ func main() {
 		fmt.Println(err)
 		os.Exit(7)
 	}
-	fmt.Printf(string(d))
+	fmt.Println(string(d))
 }
