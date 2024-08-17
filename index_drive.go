@@ -33,7 +33,7 @@ func init() {
 	}
 
 	if len(flag.Args()) != 1 {
-		println("Enter a directory to scan")
+		fmt.Println("Enter a directory to scan")
 		os.Exit(9)
 	}
 }
@@ -45,6 +45,11 @@ func main() {
 
 	err := filepath.Walk(root,
 		func(path string, info os.FileInfo, err error) error {
+			// Weird filesystem errors
+			if info == nil {
+				return nil
+			}
+
 			error_value := "none"
 			if err != nil {
 				error_value = err.Error()
