@@ -1,12 +1,13 @@
 #!/bin/sh
 
 BINARY='/usr/local/bin'
+APP=index_drive
 
-echo "Building index_drive"
-go build index_drive.go
+echo "Building $APP"
+go build -ldflags="-s -w" $APP.go
 
-echo "Installing index_drive to $BINARY"
-install -v index_drive $BINARY
+echo "Installing $APP to $BINARY"
+install $APP $BINARY
 
 echo "Removing the build"
-rm index_drive
+rm $APP
